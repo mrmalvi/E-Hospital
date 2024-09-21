@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
     if resource.is_a?(Doctor)
       if resource.admin?
         stored_location_for(resource) || admin_dashboard_path
+      elsif resource.receptionist?
+        stored_location_for(resource) || doctors_appointments_path
       else
         stored_location_for(resource) || doctors_dashboard_path
       end
