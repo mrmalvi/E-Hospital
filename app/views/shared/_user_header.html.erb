@@ -1,0 +1,29 @@
+<header class="header-background-color text-white">
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="#"><%= respond_to?(:current_hospital) ? current_hospital.name.presence || "eHospital" : "eHospital" %></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <% if doctor_signed_in? %>
+        <ul class="navbar-nav ml-auto text-white">
+          <li class="nav-item">
+            <% appointments_path = current_doctor.admin? ? admin_appointments_path : doctors_appointments_path %>
+            <a class="nav-link text-white" href="<%= appointments_path %>">Appointments</a>
+          </li>
+          <% if current_doctor.admin? %>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="<%= admin_hospitals_path %>">Hospitals</a>
+            </li>
+          <% end %>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#">Contact</a>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Log out", destroy_doctor_session_path, method: :delete, class: "btn btn-light text-primary", form_class: "d-inline" %>
+          </li>
+        </ul>
+      <% end %>
+    </div>
+  </nav>
+</header>

@@ -26,6 +26,9 @@ gem "stimulus-rails"
 
 gem 'bootstrap', '~> 5.1'
 gem 'devise'
+gem 'jquery-rails'
+gem 'turbolinks'
+gem 'simple_form'
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
