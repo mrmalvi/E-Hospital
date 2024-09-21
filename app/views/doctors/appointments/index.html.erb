@@ -1,0 +1,33 @@
+<div class="py-5">
+  <div class="d-flex justify-content-end"><%= link_to 'New Appointment', new_doctors_appointment_path, class: "btn btn-primary button-color" %></div>
+  <table class="table table-bordered mt-4">
+    <thead class="table-dark">
+      <tr>
+        <th>#</th>
+        <th>Patient Name</th>
+        <th>Doctor Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @appointments.present? %>
+        <% @appointments.each do |appointment| %>
+          <tr>
+            <td><%= appointment.id %></td>
+            <td><%= appointment.patient.name %></td>
+            <td><%= appointment.doctor.name %></td>
+            <td >
+              <%= link_to 'Show', doctors_appointment_path(appointment), class: "btn btn-success" %>
+              <%= link_to 'Edit', edit_doctors_appointment_path(appointment), class: "btn btn-warning" %>
+              <%= link_to 'Delete', doctors_appointment_path(appointment), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+            </td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <td colspan="9" class="text-center">No patients found.</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
