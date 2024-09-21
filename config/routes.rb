@@ -8,13 +8,11 @@ Rails.application.routes.draw do
     resource :dashboard, only: [:show]
     resources :doctors
     resources :hospitals
-    resources :patients
     resources :appointments
   end
 
   namespace :doctors do
     resource :dashboard, only: [:show]
-    resources :doctors
     resources :appointments
   end
 end
