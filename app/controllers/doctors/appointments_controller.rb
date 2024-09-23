@@ -7,6 +7,7 @@ module Doctors
 
     def index
       @appointments = current_hospital.appointments
+      @appointments = @appointments.joins(:patient, :doctor).where("lower(patients.name) LIKE ? OR lower(doctors.name) LIKE ?", "%#{params[:query].downcase}%", "%#{params[:query].downcase}%") if params[:query].present?
     end
 
     def new

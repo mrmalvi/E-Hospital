@@ -1,0 +1,6 @@
+<%= form_tag request.url, method: :get, class: "row g-3", id: '' do %>
+  <span class="d-flex">
+    <%= text_field_tag(:query, params[:query], { placeholder: "Search....", class: "form-control text-center" }) %>
+    <%= submit_tag("Submit") %>
+  </span>
+<% end %>
