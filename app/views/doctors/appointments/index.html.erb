@@ -23,10 +23,8 @@
             <td><%= appointment.doctor.name %></td>
             <td >
               <%= link_to 'Show', doctors_appointment_path(appointment), class: "btn btn-success" %>
-              <% if current_doctor.receptionist? %>
-                <%= link_to 'Edit', edit_doctors_appointment_path(appointment), class: "btn btn-warning #{disabled_edit_delete}" %>
-                <%= link_to 'Delete', doctors_appointment_path(appointment), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger #{disabled_edit_delete}" %>
-              <% end %>
+              <%= link_to 'Edit', edit_doctors_appointment_path(appointment), class: "btn btn-warning #{disabled_edit_delete}" %>
+              <%= link_to 'Delete', doctors_appointment_path(appointment), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger #{disabled_edit_delete}" %>
             </td>
           </tr>
         <% end %>

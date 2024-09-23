@@ -14,5 +14,13 @@ module BootstrapHelper
       end
     end
   end
+
+  def profile_image(user)
+    if user.image.attached?
+      user.image.url
+    else
+      "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
+    end
+  end
 end
 
