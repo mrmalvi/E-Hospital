@@ -15,6 +15,8 @@
                   <p class="small text-muted mb-1">Email: <%= @appointment.patient.email %></p>
                   <p class="small text-muted mb-1">Phone: <%= @appointment.patient.phone %></p>
                   <p class="small text-muted mb-1">Doctor Name: <%= @appointment.doctor.name %></p>
+                  <p class="small text-muted mb-1">Date: <%= @appointment.date&.to_date %></p>
+                  <p class="small text-muted mb-1">Slot: <%= "#{@appointment.slot_time}" %></p>
                 </div>
               </div>
               <div class="d-flex pt-1">
