@@ -1,5 +1,10 @@
 <div class="py-5">
   <div class="d-flex justify-content-end"><%= link_to 'New Appointment', new_doctors_appointment_path, class: "btn btn-primary button-color" %></div>
+    <div class="card-toolbar mt-sm-0 mt-2">
+      <div class="d-flex align-items-center">
+        <div class="mx-1"><%= render "shared/search_form" %></div>
+      </div>
+    </div>
   <table class="table table-bordered mt-4">
     <thead class="table-dark">
       <tr>
