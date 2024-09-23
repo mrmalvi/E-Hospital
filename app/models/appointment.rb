@@ -8,6 +8,12 @@ class Appointment < ApplicationRecord
 
   scope :date_asc, -> { order(date: :asc) }
 
+  def upcoming?
+    if start_time && ((date > Date.current) || (date == Date.current && start_time.strftime("%H:%M:%S") > Time.current.strftime("%H:%M:%S")))
+      true
+    end
+  end
+
   def slot_time
     "#{start_time.strftime("%I:%M %p")} - #{end_time.strftime("%I:%M %p")}" if start_time? && end_time?
   end
