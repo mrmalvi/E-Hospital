@@ -22,5 +22,16 @@ module BootstrapHelper
       "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
     end
   end
-end
 
+  def appointment_status(appointment)
+    if appointment && appointment.upcoming?
+      content_tag(:p, class: "text-success text-center") do
+        "Upcoming"
+      end
+    else
+      content_tag(:p, class: "text-danger text-center") do
+        "Completed"
+      end
+    end
+  end
+end

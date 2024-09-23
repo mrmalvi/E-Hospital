@@ -18,3 +18,18 @@ window.addEventListener('pageshow', function (event) {
   }
 });
 
+$(document).on('change', '.image-upload', function (e) {
+  var input = e.target;
+  var preview = $(input).closest('.image').find('.preview-image');
+
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      preview.attr('src', e.target.result).show();
+      preview.css({width: '150px', height: '150px'});
+    };
+    reader.readAsDataURL(input.files[0]);
+  } else {
+    preview.hide();
+  }
+});
