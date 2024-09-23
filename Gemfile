@@ -24,7 +24,7 @@ gem "turbo-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 
-gem 'bootstrap', '~> 5.1'
+gem 'bootstrap', '~> 5.3.0'
 gem 'devise'
 gem 'jquery-rails'
 gem 'turbolinks'
