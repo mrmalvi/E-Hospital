@@ -6,7 +6,7 @@
 // import "@popperjs/core"
 // import "controllers"
 
-import { Turbo } from "@hotwired/turbo-rails"
+// import { Turbo } from "@hotwired/turbo-rails"
 window.addEventListener('pageshow', function (event) {
   var historyTraversal =
     event.persisted ||
