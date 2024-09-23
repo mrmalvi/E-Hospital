@@ -101,3 +101,20 @@
 .button-color:hover {
   background-color: #80829d;
 }
+
+.dashboard-cards {
+  border-bottom: 1px solid #fff;
+}
+
+.totel-count {
+  color: purple;
+}
+
+.info-cards {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  margin-bottom: 30px;
+  gap: 20px;
+  background: #0000
+}
