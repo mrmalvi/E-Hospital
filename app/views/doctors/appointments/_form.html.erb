@@ -11,7 +11,7 @@
   </div>
 
   <div class="form-group">
-    <%= select_tag(:doctor_id, options_from_collection_for_select(current_hospital.doctors.doctor, :id, :name, params[:doctor_id]), class: "form-control", prompt: "Select Doctor") %>
+    <%= select_tag(:doctor_id, options_from_collection_for_select(current_hospital.doctors.doctor, :id, :name, selected: @appointment.doctor_id), class: "form-control", prompt: "Select Doctor") %>
   </div>
 
   <div class="form-group">
@@ -23,13 +23,13 @@
     <%= form.label :date %>
     <%= date_field_tag "date", nil, class: "form-control" %>
   </div>
+
   <div class="form-group">
-    <%= form.label :start_time %>
-    <%= select_tag(:start_time, options_for_select(TIME_SLOTS, selected: params[:start_time]), class: "form-control", prompt: "Select start time") %>
+    <%= select_tag(:start_time, options_for_select(TIME_SLOTS, selected: @appointment.start_time), class: "form-control", prompt: @appointment.formated_start_time || "Select start time") %>
   </div>
   <div class="form-group">
     <%= form.label :end_time %>
-    <%= select_tag(:end_time, options_for_select(TIME_SLOTS, selected: params[:end_time]), class: "form-control", prompt: "Select end time") %>
+    <%= select_tag(:end_time, options_for_select(TIME_SLOTS), class: "form-control", prompt: @appointment.formated_end_time || "Select end time") %>
   </div>
 
   <div class="form-group">

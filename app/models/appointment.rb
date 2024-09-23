@@ -12,6 +12,14 @@ class Appointment < ApplicationRecord
     "#{start_time.strftime("%I:%M %p")} - #{end_time.strftime("%I:%M %p")}" if start_time? && end_time?
   end
 
+  def formated_start_time
+    "#{start_time&.strftime("%I:%M %p")}"
+  end
+
+  def formated_end_time
+    "#{end_time&.strftime("%I:%M %p")}"
+  end
+
   private
     def set_defaults
       self.hospital ||= doctor&.hospital
