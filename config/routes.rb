@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   root "landing_page#index"
   namespace :admin do
     resource :dashboard, only: [:show]
-    resources :doctors
-    resources :hospitals
+    resources :hospitals, only: [:show, :index, :edit, :destroy, :new, :update, :create] do
+      resources :doctors
+    end
     resources :appointments
   end
 
