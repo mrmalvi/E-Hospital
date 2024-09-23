@@ -5,7 +5,7 @@ require "rails/all"
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-
+TIME_SLOTS = YAML.load_file('config/data/time_slots.yml')
 module EHospital
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.

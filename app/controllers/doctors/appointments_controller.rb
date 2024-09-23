@@ -6,7 +6,7 @@ module Doctors
     end
 
     def index
-      @appointments = current_hospital.appointments
+      @appointments = current_hospital.appointments.date_asc
       @appointments = @appointments.joins(:patient, :doctor).where("lower(patients.name) LIKE ? OR lower(doctors.name) LIKE ?", "%#{params[:query].downcase}%", "%#{params[:query].downcase}%") if params[:query].present?
     end
 
@@ -16,7 +16,8 @@ module Doctors
 
     def create
       @patient = current_hospital.patients.new(patient_params)
-      appointment = current_hospital.appointments.build(patient: @patient, doctor_id: params[:doctor_id])
+      appointment = @patient.appointments.build(appointment_params)
+      appointment.hospital = current_hospital
       if @patient.save
         redirect_to doctors_appointments_path, notice: "appointment has been successfully created."
       else
@@ -29,7 +30,7 @@ module Doctors
     end
 
     def update
-      if @patient.update(patient_params) && @appointment.update(doctor_id: params[:doctor_id])
+      if @patient.update(patient_params) && @appointment.update(appointment_params)
         redirect_to doctors_appointments_path, notice: 'Appointment has been updated successfully.'
       else
         flash[:error] = "#{@patient.errors.full_messages.to_sentence}, #{@appointment.errors.full_messages.to_sentence}"
@@ -53,7 +54,11 @@ module Doctors
       end
 
       def patient_params
-        params.required(:patient).permit(:name, :email, :phone, :image)
+        params.required(:patient).permit(:name, :email, :phone, :image).compact_blank
+      end
+
+      def appointment_params
+        params.permit(:doctor_id, :date, :start_time, :end_time).compact_blank
       end
   end
 end
